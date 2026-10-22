@@ -1204,3 +1204,26 @@ a.gite, a.duel__carte { text-decoration: none; }
   .sortie { grid-template-columns: 1fr; }
   .sortie__photo { min-height: 0; aspect-ratio: 16 / 10; }
 }
+
+/* ==========================================================================
+   V3, retours de Tom du 23/10/2026 : page Disponibilités, séminaire à deux photos, crédits
+   ========================================================================== */
+.seminaire-photos { grid-template-columns: repeat(2, 1fr); }
+.dispos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.dispo { display: flex; flex-direction: column; gap: 14px; scroll-margin-top: calc(var(--entete) + 20px); }
+.dispo h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 0; font-size: 26px; }
+.dispo h3 span { font: 700 14px/1 var(--f-texte); color: var(--accent); }
+.dispo .resa__bloc { flex: 1; border-style: solid; border-width: 1px; border-color: var(--creme-fonce); box-shadow: var(--ombre-douce); }
+.dispo__lien { align-self: flex-start; font-weight: 700; font-size: 14.5px; color: var(--accent); text-decoration: none; border-bottom: 2px solid var(--accent-pale); }
+.dispo__lien::after { content: " →"; }
+.dispo__lien:hover { border-color: var(--accent); }
+.resa__note--centre { text-align: center; margin-top: 22px; }
+.resa__titre { font-size: 24px; margin: 28px 0 6px; }
+.resa__bloc .boutons { margin-top: 16px; }
+.lien-fiche--vert { color: var(--accent); }
+.texte-page h3 { font-size: 20px; margin: 1.4em 0 .4em; }
+.texte-page ul { padding-left: 20px; margin: 0 0 1em; }
+.texte-page li { margin-bottom: .4em; font-size: 15.5px; }
+.texte-page a { color: var(--accent); }
+@media (max-width: 1180px) { .dispos { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) { .dispos { grid-template-columns: 1fr; } .seminaire-photos { grid-template-columns: 1fr 1fr; } }

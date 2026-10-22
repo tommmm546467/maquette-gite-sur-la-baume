@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=9f351cb5">
+<link rel="stylesheet" href="css/style.css?v=ac01d212">
 
 </head>
 <body>
@@ -37,11 +37,11 @@
         </li>
         <li><a href="evenements.html" aria-current="page">Événements et groupes</a></li>
         <li><a href="cavaliers.html">À cheval</a></li>
-        <li><a href="sorties.html">Sorties</a></li>
+        <li><a href="activites.html">Activités</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <a class="bouton entete__appel bouton--cta" href="contact.html#demande">Demander vos dates</a>
+    <a class="bouton entete__appel bouton--cta" href="disponibilites.html">Réserver</a>
     <button class="entete__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
   </div>
 </div>
@@ -73,7 +73,7 @@
         <div><h3>Anniversaires</h3><p>Une grande salle pour le repas et des chambres pour tout le monde : plus besoin de gérer les trajets.</p></div>
       </a>
       <a class="case" href="contact.html?projet=mariage#demande">
-        <div class="photo-a-prevoir"><strong>Photo à prévoir</strong>La salle dressée pour un mariage (une photo existe sur la page Facebook du gîte).</div>
+        <img src="images/mariage-maries.jpg" alt="Des mariés qui rejoignent leurs invités" loading="lazy">
         <div><h3>Mariages</h3><p>60 convives à table dans la grande salle de La Cavalière, 40 de plus au Tilleul, les terrasses pour le vin d’honneur et vos invités dorment sur place.</p></div>
       </a>
       <a class="case" href="contact.html?projet=fete#demande">
@@ -115,7 +115,6 @@
         <div class="seminaire-photos" data-groupe-photos>
           <figure><img src="images/cav-videoprojecteur.jpg" alt="Le vidéoprojecteur fixé au plafond de la grande salle" loading="lazy" data-agrandir><figcaption>Le vidéoprojecteur</figcaption></figure>
           <figure><img src="images/cav-branchement.jpg" alt="Le branchement et l’étagère pour l’ordinateur" loading="lazy" data-agrandir><figcaption>Le branchement de l’ordinateur</figcaption></figure>
-          <div class="photo-a-prevoir"><strong>Photo à prévoir</strong>L’écran déployé pendant un séminaire.</div>
         </div>
       </div>
       <div class="salle__plan apparait apparait--2">
@@ -139,33 +138,6 @@
   </div>
 </section>
 
-<section class="section section--fonce" id="weekend">
-  <div class="envelop">
-    <div class="tete-section tete-section--centre apparait">
-      <h2>Votre <em>week-end</em> au domaine</h2>
-      <p class="chapeau">Du vendredi au dimanche, le domaine est à vous.</p>
-    </div>
-    <div class="frise-v" data-fil>
-      <div class="frise-v__fil" aria-hidden="true"><span data-fil-trait></span></div>
-      <article class="etape-v" data-etape>
-        <span class="etape-v__point" aria-hidden="true"></span>
-        <div class="etape-v__photo"><img src="images/ext-cour-automne.jpg" alt="La cour où l’on se gare en arrivant" loading="lazy" data-agrandir></div>
-        <div class="etape-v__texte"><span class="etape-v__jour">Vendredi</span><h3>Chacun s’installe</h3><p>Chaque famille s’installe dans le gîte de son choix. La grande place devant les gîtes accueille toutes les voitures.</p></div>
-      </article>
-      <article class="etape-v" data-etape>
-        <span class="etape-v__point" aria-hidden="true"></span>
-        <div class="etape-v__photo photo-a-prevoir"><strong>Photo à prévoir</strong>Une longue tablée de famille dans la grande salle, un soir de fête.</div>
-        <div class="etape-v__texte"><span class="etape-v__jour">Samedi</span><h3>On mange et on joue ensemble</h3><p>Tout le monde se retrouve pour les repas, les jeux et les veillées. Les deux salles reçoivent 60 et 40 personnes assises. Pétanque et ping-pong dehors, billard et baby-foot au Tilleul.</p></div>
-      </article>
-      <article class="etape-v" data-etape>
-        <span class="etape-v__point" aria-hidden="true"></span>
-        <div class="etape-v__photo photo-a-prevoir"><strong>Photo à prévoir</strong>Le dernier repas du dimanche midi, toute la tablée dehors sur la terrasse.</div>
-        <div class="etape-v__texte"><span class="etape-v__jour">Dimanche</span><h3>On profite jusqu’au bout</h3><p>Vous prenez un dernier repas sous le préau ou sur la terrasse. Le ménage de fin de séjour est en option.</p></div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="temoignages">
   <div class="envelop temoins" data-temoins>
     <div class="temoins__photo apparait"><img src="images/cav-salle-1.jpg" alt="La grande salle de La Cavalière" loading="lazy"></div>
@@ -186,7 +158,7 @@
   </div>
 </section>
 
-<section class="section" id="equipe">
+<section class="section section--fonce" id="equipe">
   <div class="envelop">
     <div class="tete-section tete-section--centre apparait">
       <h2>43 couchages et 8 d’appoint <em>pour toute votre équipe</em></h2>
@@ -244,7 +216,7 @@
           <li><a href="gites.html">Les gîtes</a></li>
           <li><a href="evenements.html">Événements et groupes</a></li>
           <li><a href="cavaliers.html">À cheval</a></li>
-          <li><a href="sorties.html">Sorties</a></li>
+          <li><a href="activites.html">Activités</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -269,8 +241,8 @@
       </div>
     </div>
     <div class="pied__bas">
-      <span>© <span data-annee>2026</span> Gîte sur la Baume · <a href="mentions-legales.html">Mentions légales</a></span>
-      <span>Maquette OBT Agency</span>
+      <span>© <span data-annee>2026</span> Gîte sur la Baume · <a href="mentions-legales.html">Mentions légales</a> · <a href="mentions-legales.html#credits">Crédits photos</a></span>
+      <span>Site réalisé par OBT Agency</span>
     </div>
   </div>
 </footer>
