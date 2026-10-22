@@ -91,7 +91,7 @@
       });
       var liste = ouverts.map(function (x) { return '<strong>' + x + '</strong>'; });
       reponse.innerHTML = ouverts.length === 1
-        ? 'À ' + n + ', réservez ' + liste[0] + '\u00a0: jusqu’à 50 couchages, rien que pour vous.'
+        ? 'À ' + n + ', réservez ' + liste[0] + '\u00a0: 43 couchages et 8 d’appoint, rien que pour vous.'
         : 'À ' + n + ', vous avez le choix\u00a0: ' + liste.slice(0, -1).join(', ') + ' ou ' + liste[liste.length - 1] + '.';
     };
     curseur.addEventListener('input', maj);
@@ -555,5 +555,21 @@
     });
     document.addEventListener('click', function (e) { if (!li.contains(e.target)) fermer(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermer(); });
+  });
+})();
+
+/* V3 (retours de Carole du 21/10/2026) : aperçu du calendrier Smoobu, en attendant ses codes */
+(function () {
+  'use strict';
+  Array.prototype.slice.call(document.querySelectorAll('[data-calendrier]')).forEach(function (bloc) {
+    var grille = bloc.querySelector('[data-grille]');
+    var mois = bloc.querySelector('[data-mois]');
+    var auj = new Date();
+    var premier = new Date(auj.getFullYear(), auj.getMonth(), 1);
+    var nb = new Date(auj.getFullYear(), auj.getMonth() + 1, 0).getDate();
+    mois.textContent = premier.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+    var decalage = (premier.getDay() + 6) % 7; // lundi en premier
+    for (var i = 0; i < decalage; i++) { var v = document.createElement('span'); v.className = 'vide'; grille.appendChild(v); }
+    for (var j = 1; j <= nb; j++) { var d = document.createElement('span'); d.className = 'jour'; d.textContent = j; grille.appendChild(d); }
   });
 })();

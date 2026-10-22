@@ -1116,3 +1116,91 @@ a.gite, a.duel__carte { text-decoration: none; }
 @media (max-width: 860px) {
   #nature::after { background: linear-gradient(180deg, rgba(30,43,24,.78) 0%, rgba(30,43,24,.62) 50%, rgba(30,43,24,.82) 100%); }
 }
+
+
+/* ==========================================================================
+   V3 (retours de Carole du 21/10/2026) : chambres par niveau, fourni, séminaire,
+   disponibilités et réservation (Smoobu), page Sorties
+   ========================================================================== */
+
+/* Pièces en deux colonnes */
+.pieces--2 { grid-template-columns: 1fr 1fr; }
+
+/* Le Tilleul : les chambres rangées par niveau */
+.niveau { margin-top: 34px; }
+.niveau__titre { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; font: 400 clamp(22px, 2.2vw, 28px)/1.2 var(--f-titre); color: var(--encre); margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid rgba(48,68,39,.16); }
+.niveau__titre span { padding: 6px 14px; border-radius: 999px; background: var(--vert); color: var(--creme); font: 700 13px/1.2 var(--f-texte); letter-spacing: .06em; text-transform: uppercase; }
+.chambres--2 { grid-template-columns: 1fr 1fr; }
+.chambres--2 .chambre { flex-direction: row; }
+.chambres--2 .chambre__photo { flex: 0 0 44%; aspect-ratio: auto; min-height: 230px; }
+.appoint { display: flex; align-items: center; gap: 22px; margin-top: 30px; padding: 18px; border-radius: var(--rayon); background: var(--blanc); box-shadow: var(--ombre-douce); }
+.appoint img { width: 190px; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--rayon-petit); flex: none; }
+.appoint p { margin: 0; font-size: 17px; }
+.appoint strong { font: 400 22px/1.2 var(--f-titre); color: var(--vert); }
+
+/* Infos pratiques : ce qui est fourni et la consigne des produits ménagers */
+.fourni { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; align-items: center; margin-top: 18px; padding: 26px 30px; border-radius: var(--rayon); background: var(--blanc); box-shadow: var(--ombre-douce); }
+.fourni h3 { font-size: 22px; margin-bottom: 14px; }
+.fourni__liste { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 18px; }
+.fourni__liste li { padding-left: 24px; position: relative; font-size: 15px; }
+.fourni__liste li::before { content: ""; position: absolute; left: 0; top: 5px; width: 15px; height: 15px; border-radius: 50%; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center / 10px no-repeat; }
+.fourni__nature { margin: 0; display: flex; gap: 14px; align-items: flex-start; padding: 18px; border-radius: 16px; background: var(--accent-pale); color: var(--vert); font-size: 14.5px; line-height: 1.45; }
+.fourni__nature .icone-rond { width: 44px; height: 44px; background: var(--accent); color: #fff; }
+.fourni__nature strong { display: block; color: var(--encre); }
+
+/* Séminaire : les photos du vidéoprojecteur et du branchement */
+.seminaire-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; }
+.seminaire-photos figure { margin: 0; position: relative; border-radius: var(--rayon-petit); overflow: hidden; aspect-ratio: 3 / 4; }
+.seminaire-photos img { width: 100%; height: 100%; object-fit: cover; }
+.seminaire-photos figcaption { position: absolute; left: 8px; right: 8px; bottom: 8px; padding: 6px 10px; border-radius: 10px; background: rgba(30,43,24,.75); color: #fff; font-size: 12.5px; line-height: 1.3; }
+.seminaire-photos .photo-a-prevoir { min-height: 0; aspect-ratio: 3 / 4; padding: 14px; font-size: 13px; border-color: rgba(255,255,255,.35); color: var(--sauge-claire); background-color: rgba(30,43,24,.4); border-radius: var(--rayon-petit); }
+.seminaire-photos .photo-a-prevoir strong { color: var(--clair); }
+
+/* Disponibilités et réservation : les deux modules Smoobu à brancher */
+.resa { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(30px, 5vw, 70px); align-items: center; }
+.resa .boutons { margin-top: 24px; }
+.resa__modules { display: grid; gap: 14px; }
+.resa__bloc { padding: 22px 24px; border-radius: var(--rayon); border: 2px dashed var(--sauge); background: var(--blanc); }
+.resa__etiquette { margin: 0 0 12px; font: 700 12px/1.2 var(--f-texte); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.resa__mois { margin: 0 0 10px; font: 400 22px/1.2 var(--f-titre); color: var(--encre); text-transform: capitalize; }
+.resa__grille { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; text-align: center; font-size: 13px; }
+.resa__grille span { padding: 6px 0; border-radius: 8px; }
+.resa__grille span:nth-child(-n+7) { font-weight: 700; color: var(--vert-doux); }
+.resa__grille .jour { background: var(--creme); color: var(--texte); }
+.resa__grille .vide { background: none; }
+.resa__champs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.resa__champs span { padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--creme-fonce); background: var(--creme); font-size: 14px; color: var(--vert-doux); }
+.resa__note { margin: 12px 0 0; font-size: 13.5px; color: var(--vert-doux); }
+
+/* Page Sorties */
+.sorties { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+.sortie { display: grid; grid-template-columns: 1fr 1fr; background: var(--blanc); border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre-douce); }
+.sortie__photo { position: relative; min-height: 250px; }
+.sortie__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sortie__temps { position: absolute; left: 12px; top: 12px; padding: 7px 12px; border-radius: 999px; background: var(--vert); color: var(--creme); font: 700 13px/1 var(--f-texte); }
+.sortie__texte { padding: 22px 22px 18px; display: flex; flex-direction: column; gap: 8px; }
+.sortie__texte h3 { font-size: 24px; margin: 0; }
+.sortie__texte p { margin: 0; font-size: 15px; }
+.sortie__route { color: var(--accent); font-weight: 700; font-size: 14px !important; }
+.sortie__credit { margin-top: auto !important; font-size: 12px !important; color: var(--vert-doux); }
+.sortie__credit a { color: inherit; }
+.sorties__note { margin: 26px 0 0; font-size: 14px; color: var(--vert-doux); }
+
+@media (max-width: 1180px) {
+  .sorties { grid-template-columns: 1fr; }
+  .chambres--2 .chambre__photo { flex-basis: 40%; }
+}
+@media (max-width: 860px) {
+  .pieces--2, .chambres--2, .fourni, .resa { grid-template-columns: 1fr; }
+  .chambres--2 .chambre { flex-direction: column; }
+  .chambres--2 .chambre__photo { flex-basis: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .fourni { padding: 22px 20px; }
+  .fourni__liste { grid-template-columns: 1fr 1fr; }
+  .appoint { flex-direction: column; align-items: flex-start; }
+  .appoint img { width: 100%; }
+  .seminaire-photos { gap: 6px; }
+  .resa__bloc { padding: 18px; }
+  .resa__champs { grid-template-columns: 1fr; }
+  .sortie { grid-template-columns: 1fr; }
+  .sortie__photo { min-height: 0; aspect-ratio: 16 / 10; }
+}

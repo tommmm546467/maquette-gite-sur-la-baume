@@ -9,8 +9,8 @@ pas propriétaire. Son site officiel reste gitesurlabaume.fr.
 - Les pages portent `noindex, nofollow` : elles ne doivent pas apparaître dans les moteurs de recherche ni
   concurrencer le site ou la fiche Google du gîte.
 - Les textes, les photos, le logo et la vidéo filmée par drone viennent du site public du gîte et de ses annonces.
-- Deux photos d'illustration sont libres de droit et créditées dans les mentions légales : la vallée du Dessoubre
-  (Espirat, Wikimedia Commons, CC BY-SA 4.0) et une tablée d'amis (Nicole Herrero, Unsplash).
+- Les photos d'illustration sont libres de droit et créditées dans les mentions légales : la vallée du Dessoubre
+  (Espirat, Wikimedia Commons, CC BY-SA 4.0) et une tablée d'amis (Nicole Herrero, Unsplash). Les photos de la page Sorties sont aussi libres de droit (Wikimedia Commons), avec leur auteur et leur licence sur la page et dans les mentions légales.
 - Les avis affichés sont des avis publics, recopiés mot pour mot.
 - Les formulaires préparent un e-mail vers l'adresse publique du gîte : aucune donnée n'est collectée ici.
 
