@@ -545,7 +545,7 @@
 
   /* Sous-menu « Les gîtes » : survol sur ordinateur, bouton au clavier ----- */
   $$('.menu__deroulant').forEach(function (li) {
-    var bouton = $('.menu__ouvrir', li);
+    var bouton = $('.menu__parent', li);
     if (!bouton) return;
     var fermer = function () { li.classList.remove('est-ouvert'); bouton.setAttribute('aria-expanded', 'false'); };
     bouton.addEventListener('click', function (e) {
@@ -558,18 +558,18 @@
   });
 })();
 
-/* V3 (retours de Carole du 21/10/2026) : aperçu du calendrier Smoobu, en attendant ses codes */
+/* Carte Google Maps : chargée seulement au clic (Google ne reçoit rien avant) */
 (function () {
   'use strict';
-  Array.prototype.slice.call(document.querySelectorAll('[data-calendrier]')).forEach(function (bloc) {
-    var grille = bloc.querySelector('[data-grille]');
-    var mois = bloc.querySelector('[data-mois]');
-    var auj = new Date();
-    var premier = new Date(auj.getFullYear(), auj.getMonth(), 1);
-    var nb = new Date(auj.getFullYear(), auj.getMonth() + 1, 0).getDate();
-    mois.textContent = premier.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
-    var decalage = (premier.getDay() + 6) % 7; // lundi en premier
-    for (var i = 0; i < decalage; i++) { var v = document.createElement('span'); v.className = 'vide'; grille.appendChild(v); }
-    for (var j = 1; j <= nb; j++) { var d = document.createElement('span'); d.className = 'jour'; d.textContent = j; grille.appendChild(d); }
+  Array.prototype.slice.call(document.querySelectorAll('[data-carte]')).forEach(function (bloc) {
+    var bouton = bloc.querySelector('[data-carte-ouvrir]');
+    if (!bouton) return;
+    bouton.addEventListener('click', function () {
+      var cadre = document.createElement('iframe');
+      cadre.src = bloc.getAttribute('data-carte');
+      cadre.title = bloc.getAttribute('data-titre') || 'Carte';
+      cadre.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      bloc.appendChild(cadre);
+    });
   });
 })();

@@ -8,10 +8,9 @@
 <meta name="description" content="Demandez vos dates ou un devis au Gîte sur la Baume, Sur la Baume, 25380 Belleherbe : 06 51 67 38 07, reservation@gitesurlabaume.fr.">
 <meta name="theme-color" content="#304427">
 <link rel="icon" href="images/logo-embleme.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=ac01d212">
+<link rel="preload" href="fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/mulish-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=eb211a47">
 
 </head>
 <body>
@@ -27,8 +26,7 @@
       <ul class="menu">
         <li><a href="index.html">Accueil</a></li>
         <li class="menu__deroulant">
-          <a href="gites.html">Les gîtes</a>
-          <button class="menu__ouvrir" type="button" aria-expanded="false" aria-label="Voir les trois gîtes"><span aria-hidden="true"></span></button>
+          <button class="menu__parent" type="button" aria-expanded="false" aria-haspopup="true">Les gîtes<span class="menu__fleche" aria-hidden="true"></span></button>
           <ul class="sous-menu">
             <li><a href="la-cavaliere.html"><strong>La Cavalière</strong><span>22 + 2 pers.</span></a></li>
             <li><a href="le-tilleul.html"><strong>Le Tilleul</strong><span>21 + 6 pers.</span></a></li>
@@ -41,7 +39,7 @@
         <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
-    <a class="bouton entete__appel bouton--cta" href="disponibilites.html">Réserver</a>
+    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-obt-reserve>Réserver</a>
     <button class="entete__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
   </div>
 </div>
@@ -109,6 +107,23 @@
   </div>
 </section>
 
+<section class="section section--fonce" id="questions">
+  <div class="etroit">
+    <div class="tete-section tete-section--centre apparait">
+      <h2>Bon <em>à savoir</em></h2>
+    </div>
+    <div class="faq apparait apparait--2">
+      <details open><summary>Peut-on louer un seul gîte ?</summary><p>Oui, vous pouvez louer uniquement La Cavalière (22 couchages et 2 d’appoint) ou Le Tilleul (21 couchages et 6 d’appoint). Contactez-nous pour un devis adapté.</p></details>
+      <details><summary>Comment fonctionne la gestion libre ?</summary><p>Chaque gîte a sa cuisine équipée : plaques de cuisson, four, micro-ondes, réfrigérateur, congélateur, vaisselle et ustensiles, lave-vaisselle au Tilleul. Vous êtes totalement autonomes pour vos repas.</p></details>
+      <details><summary>Peut-on faire venir un traiteur ?</summary><p>Absolument. Vous êtes libres de faire appel au traiteur de votre choix. Nous pouvons aussi vous orienter vers des traiteurs locaux qui livrent directement au gîte.</p></details>
+      <details><summary>Les animaux sont-ils acceptés ?</summary><p>Oui, vos animaux de compagnie sont les bienvenus dans les deux gîtes.</p></details>
+      <details><summary>Devons-nous faire le ménage en partant ?</summary><p>Le ménage de fin de séjour est en option (230 € par gîte). Si vous ne le choisissez pas, le gîte doit être rendu propre et rangé, avec les produits ménagers fournis : ils protègent la nature autour du gîte et la fosse toutes eaux.</p></details>
+      <details><summary>Y a-t-il une caution à verser ?</summary><p>Les conditions de réservation (acompte, caution) vous sont communiquées lors de votre demande de réservation.</p></details>
+      <details><summary>Y a-t-il un parking ?</summary><p>Oui, une grande place devant le gîte permet de stationner facilement, y compris avec des vans et des camionnettes.</p></details>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="venir">
   <div class="envelop venir">
     <div class="apparait">
@@ -124,7 +139,14 @@
       <p style="font-size:14px">Coordonnées GPS : 47.264134, 6.674211</p>
     </div>
     <div class="venir__carte apparait apparait--2">
-      <iframe title="Carte du Gîte sur la Baume" src="https://maps.google.com/maps?q=47.264134,6.674211&amp;z=12&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <div class="carte-clic" data-carte="https://maps.google.com/maps?q=47.264134,6.674211&amp;z=12&amp;output=embed" data-titre="Carte du Gîte sur la Baume">
+        <img src="images/ciel-cour.jpg" alt="" loading="lazy">
+        <div class="carte-clic__texte">
+          <strong>Carte Google Maps</strong>
+          <p>La carte ne se charge que si vous le décidez : Google ne reçoit rien tant que vous ne cliquez pas.</p>
+          <button class="bouton" type="button" data-carte-ouvrir>Afficher la carte</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -140,7 +162,6 @@
         <h3>Le site</h3>
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="gites.html">Les gîtes</a></li>
           <li><a href="evenements.html">Événements et groupes</a></li>
           <li><a href="cavaliers.html">À cheval</a></li>
           <li><a href="activites.html">Activités</a></li>
@@ -173,6 +194,9 @@
     </div>
   </div>
 </footer>
-<script src="js/main.js?v=ac3fad0a"></script>
+<script src="js/main.js?v=fafd0d5c"></script>
+<div data-obt-booking data-obt-key="demo-gite-sur-la-baume" data-obt-api="https://demo-baume.obt.invalid" data-obt-form-key="demo" data-obt-form-endpoint="https://demo-baume.obt.invalid/envoi" data-obt-subject="Demande de réservation au Gîte sur la Baume"></div>
+<script src="js/obt-demo.js"></script>
+<script src="https://obt-gestion.com/blocks/obt-booking.js" defer></script>
 </body>
 </html>

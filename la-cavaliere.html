@@ -8,10 +8,9 @@
 <meta name="description" content="La Cavalière, gîte de groupe de 22 couchages et 2 d'appoint à Belleherbe (Doubs) : grande salle de 60 places assises qui sert aussi de salle de conférence, cuisine équipée et 4 chambres avec salle de bain.">
 <meta name="theme-color" content="#304427">
 <link rel="icon" href="images/logo-embleme.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=ac01d212">
+<link rel="preload" href="fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/mulish-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=eb211a47">
 
 </head>
 <body>
@@ -27,8 +26,7 @@
       <ul class="menu">
         <li><a href="index.html">Accueil</a></li>
         <li class="menu__deroulant">
-          <a href="gites.html" aria-current="page">Les gîtes</a>
-          <button class="menu__ouvrir" type="button" aria-expanded="false" aria-label="Voir les trois gîtes"><span aria-hidden="true"></span></button>
+          <button class="menu__parent" type="button" aria-expanded="false" aria-haspopup="true" aria-current="page">Les gîtes<span class="menu__fleche" aria-hidden="true"></span></button>
           <ul class="sous-menu">
             <li><a href="la-cavaliere.html" aria-current="page"><strong>La Cavalière</strong><span>22 + 2 pers.</span></a></li>
             <li><a href="le-tilleul.html"><strong>Le Tilleul</strong><span>21 + 6 pers.</span></a></li>
@@ -41,7 +39,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <a class="bouton entete__appel bouton--cta" href="disponibilites.html">Réserver</a>
+    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-obt-reserve>Réserver</a>
     <button class="entete__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
   </div>
 </div>
@@ -57,7 +55,7 @@
       <li><strong>60</strong>places assises</li>
       <li><strong>4</strong>chambres</li>
     </ul>
-    <div class="boutons"><a class="bouton" href="disponibilites.html#cavaliere">Voir les disponibilités</a><a class="bouton bouton--clair bouton--cta" href="contact.html?gite=cavaliere#demande">Demander un devis</a></div>
+    <div class="boutons"><a class="bouton bouton--cta" href="contact.html?gite=cavaliere#demande" data-obt-reserve="la-cavaliere">Réserver en ligne</a><a class="bouton bouton--clair bouton--cta" href="contact.html?gite=cavaliere#demande">Demander un devis</a></div>
   </div>
 </header>
 
@@ -197,6 +195,37 @@
   </div>
 </section>
 
+<section class="section" id="location">
+  <div class="envelop">
+    <div class="tete-section tete-section--centre apparait">
+      <h2>Comment se passe <em>la location</em></h2>
+      <p class="chapeau">Choisissez vos dates : le prix du séjour s’affiche tout de suite.</p>
+    </div>
+    <div class="tarifs-plus apparait apparait--2">
+      <div>
+        <h3>Les règles de location</h3>
+        <ul class="liste-cochee">
+          <li>Le week-end se loue uniquement en forfait 2 nuits, du vendredi au dimanche</li>
+          <li>Les nuits en semaine se louent du lundi au jeudi</li>
+          <li>Vous louez un gîte entier, quel que soit le nombre de personnes</li>
+          <li>Ménage de fin de séjour en option : 230 € par gîte</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Compris dans le prix</h3>
+        <ul class="liste-cochee">
+          <li>La taxe de séjour, l’eau, l’électricité et le chauffage</li>
+          <li>Les draps, la literie et le linge de bain</li>
+          <li>Le gel douche, le shampooing et le papier toilette</li>
+          <li>Les produits ménagers, la vaisselle et le matériel de cuisine</li>
+          <li>Le Wi-Fi, les lits parapluie, la chaise haute et le parking</li>
+        </ul>
+      </div>
+    </div>
+    <p class="location__bouton apparait"><a class="bouton bouton--cta" href="contact.html?gite=la-cavaliere#demande" data-obt-reserve="la-cavaliere">Réserver en ligne</a></p>
+  </div>
+</section>
+
 <section class="appel" id="appel">
   <div class="appel__fond"><img src="images/cav-terrasse.jpg" alt="" loading="lazy"></div>
   <div class="appel__contenu">
@@ -218,7 +247,6 @@
         <h3>Le site</h3>
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="gites.html">Les gîtes</a></li>
           <li><a href="evenements.html">Événements et groupes</a></li>
           <li><a href="cavaliers.html">À cheval</a></li>
           <li><a href="activites.html">Activités</a></li>
@@ -251,6 +279,9 @@
     </div>
   </div>
 </footer>
-<script src="js/main.js?v=ac3fad0a"></script>
+<script src="js/main.js?v=fafd0d5c"></script>
+<div data-obt-booking data-obt-key="demo-gite-sur-la-baume" data-obt-api="https://demo-baume.obt.invalid" data-obt-form-key="demo" data-obt-form-endpoint="https://demo-baume.obt.invalid/envoi" data-obt-subject="Demande de réservation au Gîte sur la Baume"></div>
+<script src="js/obt-demo.js"></script>
+<script src="https://obt-gestion.com/blocks/obt-booking.js" defer></script>
 </body>
 </html>

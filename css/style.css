@@ -1227,3 +1227,40 @@ a.gite, a.duel__carte { text-decoration: none; }
 .texte-page a { color: var(--accent); }
 @media (max-width: 1180px) { .dispos { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 860px) { .dispos { grid-template-columns: 1fr; } .seminaire-photos { grid-template-columns: 1fr 1fr; } }
+
+/* =======================================
+   23/10/2026 (suite) : polices hébergées sur le site (plus aucune requête vers Google Fonts),
+   bouton « Les gîtes » sans page, panneau de réservation OBT, carte chargée au clic
+   ======================================= */
+@font-face { font-family: "Marcellus"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/marcellus-latin-ext.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Marcellus"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/marcellus-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Mulish"; font-style: normal; font-weight: 200 1000; font-display: swap; src: url(../fonts/mulish-latin-ext.woff2) format("woff2"); unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Mulish"; font-style: normal; font-weight: 200 1000; font-display: swap; src: url(../fonts/mulish-latin.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+.menu__parent { font: 600 15px/1.65 var(--f-texte); color: inherit; background: none; border: 0; padding: 6px 0; cursor: pointer; position: relative; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.menu__parent::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+.menu__parent:hover::after, .menu__parent[aria-current="page"]::after, .menu__deroulant.est-ouvert .menu__parent::after { transform: scaleX(1); }
+.menu__parent:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.menu__fleche { width: 7px; height: 7px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .25s; }
+.menu__deroulant:hover .menu__fleche, .menu__deroulant.est-ouvert .menu__fleche { transform: translateY(1px) rotate(-135deg); }
+@media (max-width: 1180px) {
+  .entete.menu-ouvert .menu__parent { font: 400 34px/1.35 var(--f-titre); color: #fff; padding: 0; text-align: left; }
+  .entete.menu-ouvert .menu__parent::after, .entete.menu-ouvert .menu__fleche { display: none; }
+  .entete.menu-ouvert .menu__deroulant { flex-direction: column; align-items: center; }
+  .entete.menu-ouvert .menu__parent { justify-content: center; text-align: center; }
+  .entete.menu-ouvert .sous-menu { padding: 0 0 6px; text-align: center; }
+  .entete.menu-ouvert .sous-menu a { justify-content: center; gap: 12px; }
+}
+
+.location__bouton { text-align: center; margin: 34px 0 0; }
+
+/* Panneau de réservation OBT (le même que sur le site de T'Nature), aux couleurs du gîte */
+:root { --obt-accent: #55733A; --obt-accent-text: #fff; --obt-bg: #FFFAF3; --obt-text: #1E2B18; --obt-line: rgba(30, 43, 24, .16); --obt-radius: 14px; }
+
+.carte-clic { position: relative; min-height: 420px; height: 100%; display: grid; place-items: center; padding: 24px; isolation: isolate; text-align: center; }
+.carte-clic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.carte-clic::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(30, 43, 24, .62); }
+.carte-clic__texte { max-width: 380px; color: #fff; }
+.carte-clic__texte strong { display: block; font: 400 26px/1.2 var(--f-titre); margin-bottom: 8px; }
+.carte-clic__texte p { margin: 0 0 18px; font-size: 15px; }
+.carte-clic iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }

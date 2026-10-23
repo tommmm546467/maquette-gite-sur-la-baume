@@ -8,10 +8,9 @@
 <meta name="description" content="Mentions légales, crédits photos et données personnelles du site du Gîte sur la Baume, Belleherbe (Doubs).">
 <meta name="theme-color" content="#304427">
 <link rel="icon" href="images/logo-embleme.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mulish:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=ac01d212">
+<link rel="preload" href="fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/mulish-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css?v=eb211a47">
 
 </head>
 <body>
@@ -27,8 +26,7 @@
       <ul class="menu">
         <li><a href="index.html">Accueil</a></li>
         <li class="menu__deroulant">
-          <a href="gites.html">Les gîtes</a>
-          <button class="menu__ouvrir" type="button" aria-expanded="false" aria-label="Voir les trois gîtes"><span aria-hidden="true"></span></button>
+          <button class="menu__parent" type="button" aria-expanded="false" aria-haspopup="true">Les gîtes<span class="menu__fleche" aria-hidden="true"></span></button>
           <ul class="sous-menu">
             <li><a href="la-cavaliere.html"><strong>La Cavalière</strong><span>22 + 2 pers.</span></a></li>
             <li><a href="le-tilleul.html"><strong>Le Tilleul</strong><span>21 + 6 pers.</span></a></li>
@@ -41,7 +39,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <a class="bouton entete__appel bouton--cta" href="disponibilites.html">Réserver</a>
+    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-obt-reserve>Réserver</a>
     <button class="entete__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
   </div>
 </div>
@@ -86,10 +84,9 @@
     </ul>
     <h3>Autres pages (Unsplash)</h3>
     <ul>
-      <li>Accueil, « Fêter en famille ou entre amis » : Olek Buzunov, <a href="https://unsplash.com/photos/QqKp6afm3ZY" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
-      <li>Accueil, « Réunir une équipe ou une classe » : FORTYTWO, <a href="https://unsplash.com/photos/MDu-53qRVr4" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
-      <li>Événements et groupes, « Mariages » : Samuel Cruz, <a href="https://unsplash.com/photos/KxtqARas-TE" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
-      <li>Le domaine entier, « Mariages et fêtes de famille » : Pedro Pulido, <a href="https://unsplash.com/photos/Z-qiwJQIBVA" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
+      <li>Accueil, « Réunir une équipe ou une classe » : Christina @ wocintechchat.com, <a href="https://unsplash.com/photos/faEfWCdOKIg" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
+      <li>Le domaine entier et Événements et groupes, « Cousinades et retrouvailles » : Wemax Projectors, <a href="https://unsplash.com/photos/vnLhNxbMdLk" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
+      <li>Accueil, Événements et groupes et le domaine entier, « Mariages et fêtes de famille » : Pedro Pulido, <a href="https://unsplash.com/photos/Z-qiwJQIBVA" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
       <li>À cheval, « Randonnées équestres » : Valentin Zickner, <a href="https://unsplash.com/photos/uNssca4IsiE" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
       <li>À cheval, « Stages » : Elisa Rautavala, <a href="https://unsplash.com/photos/yZbdyAfaFo8" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
       <li>À cheval, « Rassemblements de cavaliers » : Valerie, <a href="https://unsplash.com/photos/AOxmZUVlIB4" target="_blank" rel="noopener">Unsplash</a>, Licence Unsplash.</li>
@@ -98,10 +95,11 @@
 
     <h2>Données personnelles</h2>
     <p>Le formulaire de contact ne stocke rien : il prépare un e-mail que vous envoyez vous-même depuis votre messagerie. Les informations transmises servent uniquement à répondre à votre demande. Elles ne sont ni vendues ni transmises à des tiers.</p>
+    <p>La demande saisie dans le panneau de réservation est transmise à Carole Blanchot et conservée le temps de la traiter. Le panneau est fourni par OBT Agency.</p>
     <p>Vous pouvez demander l’accès, la correction ou la suppression de vos données à tout moment : reservation@gitesurlabaume.fr.</p>
 
     <h2>Cookies et services tiers</h2>
-    <p>Ce site n’utilise ni cookie de mesure d’audience, ni cookie publicitaire. La page Contact affiche une carte Google Maps et les polices du site sont chargées depuis Google Fonts : ces services peuvent recevoir votre adresse IP.</p>
+    <p>Ce site ne dépose aucun cookie : ni mesure d’audience, ni publicité, ni suivi. Il n’a donc pas de bandeau de consentement. Les polices d’écriture sont hébergées sur le site lui-même (polices Marcellus et Mulish, licence SIL Open Font). La carte de la page Contact est une carte Google Maps qui ne se charge que si vous cliquez sur « Afficher la carte » : avant ce clic, Google ne reçoit aucune information.</p>
   </div>
 </div>
 </main>
@@ -116,7 +114,6 @@
         <h3>Le site</h3>
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="gites.html">Les gîtes</a></li>
           <li><a href="evenements.html">Événements et groupes</a></li>
           <li><a href="cavaliers.html">À cheval</a></li>
           <li><a href="activites.html">Activités</a></li>
@@ -149,6 +146,9 @@
     </div>
   </div>
 </footer>
-<script src="js/main.js?v=ac3fad0a"></script>
+<script src="js/main.js?v=fafd0d5c"></script>
+<div data-obt-booking data-obt-key="demo-gite-sur-la-baume" data-obt-api="https://demo-baume.obt.invalid" data-obt-form-key="demo" data-obt-form-endpoint="https://demo-baume.obt.invalid/envoi" data-obt-subject="Demande de réservation au Gîte sur la Baume"></div>
+<script src="js/obt-demo.js"></script>
+<script src="https://obt-gestion.com/blocks/obt-booking.js" defer></script>
 </body>
 </html>
