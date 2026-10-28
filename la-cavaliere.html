@@ -10,7 +10,7 @@
 <link rel="icon" href="images/logo-embleme.jpg">
 <link rel="preload" href="fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/mulish-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=eb211a47">
+<link rel="stylesheet" href="css/style.css?v=3d191b0e">
 
 </head>
 <body>
@@ -39,7 +39,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-obt-reserve>Réserver</a>
+    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-reserver>Réserver</a>
     <button class="entete__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
   </div>
 </div>
@@ -55,7 +55,7 @@
       <li><strong>60</strong>places assises</li>
       <li><strong>4</strong>chambres</li>
     </ul>
-    <div class="boutons"><a class="bouton bouton--cta" href="contact.html?gite=cavaliere#demande" data-obt-reserve="la-cavaliere">Réserver en ligne</a><a class="bouton bouton--clair bouton--cta" href="contact.html?gite=cavaliere#demande">Demander un devis</a></div>
+    <div class="boutons"><a class="bouton bouton--cta" href="contact.html?gite=cavaliere#demande" data-reserver="la-cavaliere">Réserver en ligne</a><a class="bouton bouton--clair bouton--cta" href="contact.html?gite=cavaliere#demande">Demander un devis</a></div>
   </div>
 </header>
 
@@ -222,7 +222,7 @@
         </ul>
       </div>
     </div>
-    <p class="location__bouton apparait"><a class="bouton bouton--cta" href="contact.html?gite=la-cavaliere#demande" data-obt-reserve="la-cavaliere">Réserver en ligne</a></p>
+    <p class="location__bouton apparait"><a class="bouton bouton--cta" href="contact.html?gite=la-cavaliere#demande" data-reserver="la-cavaliere">Réserver en ligne</a></p>
   </div>
 </section>
 
@@ -280,8 +280,23 @@
   </div>
 </footer>
 <script src="js/main.js?v=fafd0d5c"></script>
-<div data-obt-booking data-obt-key="demo-gite-sur-la-baume" data-obt-api="https://demo-baume.obt.invalid" data-obt-form-key="demo" data-obt-form-endpoint="https://demo-baume.obt.invalid/envoi" data-obt-subject="Demande de réservation au Gîte sur la Baume"></div>
-<script src="js/obt-demo.js"></script>
-<script src="https://obt-gestion.com/blocks/obt-booking.js" defer></script>
+<div class="resa-panneau" id="reserver" role="dialog" aria-modal="true" aria-labelledby="resa-titre" hidden>
+  <div class="resa-panneau__voile" data-resa-fermer></div>
+  <div class="resa-panneau__boite">
+    <div class="resa-panneau__tete">
+      <h2 id="resa-titre">Réserver</h2>
+      <button class="resa-panneau__fermer" type="button" data-resa-fermer aria-label="Fermer le panneau de réservation"><span aria-hidden="true">×</span></button>
+    </div>
+    <p class="resa-panneau__intro">Choisissez votre gîte, puis vos dates : les jours libres et le prix s’affichent tout de suite.</p>
+    <div class="resa-choix">
+      <button class="resa-carte" type="button" data-gite="le-domaine" aria-pressed="false"><img src="images/ciel-cour.jpg" alt="" loading="lazy"><span><strong>Le domaine entier</strong><small>43 + 8 pers.</small></span></button>
+      <button class="resa-carte" type="button" data-gite="la-cavaliere" aria-pressed="false"><img src="images/cav-salle-1.jpg" alt="" loading="lazy"><span><strong>La Cavalière</strong><small>22 + 2 pers.</small></span></button>
+      <button class="resa-carte" type="button" data-gite="le-tilleul" aria-pressed="false"><img src="images/til-batiment.jpg" alt="" loading="lazy"><span><strong>Le Tilleul</strong><small>21 + 6 pers.</small></span></button>
+    </div>
+    <div class="resa-moteur" data-resa-moteur><p class="resa-moteur__vide">Choisissez un gîte pour voir ses disponibilités et ses prix.</p></div>
+    <p class="resa-note">Aucun paiement sur le site : Carole confirme votre demande puis vous envoie la facture, à régler par virement. Elle répond du lundi au vendredi.</p>
+  </div>
+</div>
+<script src="js/reservation.js?v=bc8d2914"></script>
 </body>
 </html>

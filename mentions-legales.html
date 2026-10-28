@@ -10,7 +10,7 @@
 <link rel="icon" href="images/logo-embleme.jpg">
 <link rel="preload" href="fonts/marcellus-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/mulish-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=eb211a47">
+<link rel="stylesheet" href="css/style.css?v=3d191b0e">
 
 </head>
 <body>
@@ -39,7 +39,7 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-obt-reserve>Réserver</a>
+    <a class="bouton entete__appel bouton--cta" href="contact.html#demande" data-reserver>Réserver</a>
     <button class="entete__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span></button>
   </div>
 </div>
@@ -98,11 +98,11 @@
 
     <h2>Données personnelles</h2>
     <p>Le formulaire de contact ne stocke rien : il prépare un e-mail que vous envoyez vous-même depuis votre messagerie. Les informations transmises servent uniquement à répondre à votre demande. Elles ne sont ni vendues ni transmises à des tiers.</p>
-    <p>La demande saisie dans le panneau de réservation est transmise à Carole Blanchot et conservée le temps de la traiter. Le panneau est fourni par OBT Agency.</p>
+    <p>La demande de réservation est saisie dans le module de réservation de Smoobu (Smoobu GmbH, Berlin, Allemagne), l’outil de gestion des réservations du gîte. Elle est transmise à Carole Blanchot et conservée le temps de gérer le séjour. Aucun paiement n’est demandé sur le site : la facture est envoyée après confirmation et se règle par virement.</p>
     <p>Vous pouvez demander l’accès, la correction ou la suppression de vos données à tout moment : reservation@gitesurlabaume.fr.</p>
 
     <h2>Cookies et services tiers</h2>
-    <p>Ce site ne dépose aucun cookie : ni mesure d’audience, ni publicité, ni suivi. Il n’a donc pas de bandeau de consentement. Les polices d’écriture sont hébergées sur le site lui-même (polices Marcellus et Mulish, licence SIL Open Font). La carte de la page Contact est une carte Google Maps qui ne se charge que si vous cliquez sur « Afficher la carte » : avant ce clic, Google ne reçoit aucune information.</p>
+    <p>Ce site ne dépose aucun cookie : ni mesure d’audience, ni publicité, ni suivi. Il n’a donc pas de bandeau de consentement. Les polices d’écriture sont hébergées sur le site lui-même (polices Marcellus et Mulish, licence SIL Open Font). La carte de la page Contact est une carte Google Maps qui ne se charge que si vous cliquez sur « Afficher la carte » : avant ce clic, Google ne reçoit aucune information. De même, le module de réservation de Smoobu ne se charge qu’à l’ouverture du panneau « Réserver » : il dépose alors un cookie technique de sécurité de son hébergeur (Cloudflare), nécessaire à son fonctionnement, qui ne sert ni à la publicité ni au suivi.</p>
   </div>
 </div>
 </main>
@@ -150,8 +150,23 @@
   </div>
 </footer>
 <script src="js/main.js?v=fafd0d5c"></script>
-<div data-obt-booking data-obt-key="demo-gite-sur-la-baume" data-obt-api="https://demo-baume.obt.invalid" data-obt-form-key="demo" data-obt-form-endpoint="https://demo-baume.obt.invalid/envoi" data-obt-subject="Demande de réservation au Gîte sur la Baume"></div>
-<script src="js/obt-demo.js"></script>
-<script src="https://obt-gestion.com/blocks/obt-booking.js" defer></script>
+<div class="resa-panneau" id="reserver" role="dialog" aria-modal="true" aria-labelledby="resa-titre" hidden>
+  <div class="resa-panneau__voile" data-resa-fermer></div>
+  <div class="resa-panneau__boite">
+    <div class="resa-panneau__tete">
+      <h2 id="resa-titre">Réserver</h2>
+      <button class="resa-panneau__fermer" type="button" data-resa-fermer aria-label="Fermer le panneau de réservation"><span aria-hidden="true">×</span></button>
+    </div>
+    <p class="resa-panneau__intro">Choisissez votre gîte, puis vos dates : les jours libres et le prix s’affichent tout de suite.</p>
+    <div class="resa-choix">
+      <button class="resa-carte" type="button" data-gite="le-domaine" aria-pressed="false"><img src="images/ciel-cour.jpg" alt="" loading="lazy"><span><strong>Le domaine entier</strong><small>43 + 8 pers.</small></span></button>
+      <button class="resa-carte" type="button" data-gite="la-cavaliere" aria-pressed="false"><img src="images/cav-salle-1.jpg" alt="" loading="lazy"><span><strong>La Cavalière</strong><small>22 + 2 pers.</small></span></button>
+      <button class="resa-carte" type="button" data-gite="le-tilleul" aria-pressed="false"><img src="images/til-batiment.jpg" alt="" loading="lazy"><span><strong>Le Tilleul</strong><small>21 + 6 pers.</small></span></button>
+    </div>
+    <div class="resa-moteur" data-resa-moteur><p class="resa-moteur__vide">Choisissez un gîte pour voir ses disponibilités et ses prix.</p></div>
+    <p class="resa-note">Aucun paiement sur le site : Carole confirme votre demande puis vous envoie la facture, à régler par virement. Elle répond du lundi au vendredi.</p>
+  </div>
+</div>
+<script src="js/reservation.js?v=bc8d2914"></script>
 </body>
 </html>

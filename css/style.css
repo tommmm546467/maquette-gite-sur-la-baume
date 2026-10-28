@@ -1254,8 +1254,6 @@ a.gite, a.duel__carte { text-decoration: none; }
 
 .location__bouton { text-align: center; margin: 34px 0 0; }
 
-/* Panneau de réservation OBT (le même que sur le site de T'Nature), aux couleurs du gîte */
-:root { --obt-accent: #55733A; --obt-accent-text: #fff; --obt-bg: #FFFAF3; --obt-text: #1E2B18; --obt-line: rgba(30, 43, 24, .16); --obt-radius: 14px; }
 
 .carte-clic { position: relative; min-height: 420px; height: 100%; display: grid; place-items: center; padding: 24px; isolation: isolate; text-align: center; }
 .carte-clic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
@@ -1264,3 +1262,38 @@ a.gite, a.duel__carte { text-decoration: none; }
 .carte-clic__texte strong { display: block; font: 400 26px/1.2 var(--f-titre); margin-bottom: 8px; }
 .carte-clic__texte p { margin: 0 0 18px; font-size: 15px; }
 .carte-clic iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 1; }
+
+/* =======================================
+   28/10/2026 : panneau de réservation (choix A de Tom, comme T'Nature), branché sur le Smoobu de Carole
+   ======================================= */
+body.resa-ouvert { overflow: hidden; }
+.resa-panneau { position: fixed; inset: 0; z-index: 200; }
+.resa-panneau__voile { position: absolute; inset: 0; background: rgba(20, 29, 15, .5); opacity: 0; transition: opacity .25s; }
+.resa-panneau__boite { position: absolute; top: 0; right: 0; bottom: 0; width: min(620px, 100%); background: var(--blanc); box-shadow: -18px 0 50px rgba(20, 29, 15, .25); overflow-y: auto; overscroll-behavior: contain; padding: max(22px, env(safe-area-inset-top, 0px)) max(22px, env(safe-area-inset-right, 0px)) max(28px, env(safe-area-inset-bottom, 0px)) 22px; display: flex; flex-direction: column; gap: 16px; transform: translateX(100%); transition: transform .3s ease; }
+.resa-panneau__boite > * { flex-shrink: 0; }
+.resa-panneau.est-ouvert .resa-panneau__voile { opacity: 1; }
+.resa-panneau.est-ouvert .resa-panneau__boite { transform: none; }
+.resa-panneau__tete { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.resa-panneau__tete h2 { margin: 0; font-size: 30px; }
+.resa-panneau__fermer { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--trait); background: none; color: var(--encre); font-size: 24px; line-height: 1; cursor: pointer; display: grid; place-items: center; flex: none; }
+.resa-panneau__fermer:hover { background: var(--creme); }
+.resa-panneau__fermer:focus-visible, .resa-carte:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.resa-panneau__intro { margin: 0; font-size: 15px; }
+.resa-choix { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.resa-carte { display: flex; flex-direction: column; gap: 8px; padding: 8px; border-radius: 14px; border: 1px solid var(--trait); background: #fff; cursor: pointer; text-align: left; font: inherit; color: var(--texte); transition: border-color .2s, box-shadow .2s; }
+.resa-carte img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 9px; display: block; }
+.resa-carte strong { display: block; font: 400 17px/1.2 var(--f-titre); color: var(--encre); }
+.resa-carte small { font-size: 13px; font-weight: 700; color: var(--accent); }
+.resa-carte:hover { border-color: var(--accent); }
+.resa-carte[aria-pressed="true"] { border: 2px solid var(--accent); box-shadow: 0 6px 18px rgba(30, 43, 24, .12); padding: 7px; }
+.resa-moteur { border-radius: 14px; background: #fff; border: 1px solid var(--trait); min-height: 120px; }
+.resa-moteur__vide { margin: 0; padding: 28px 20px; text-align: center; color: var(--doux, #6b7461); font-size: 15px; }
+.resa-moteur__cadre { display: block; width: 100%; min-height: 760px; border: 0; border-radius: 14px; }
+.resa-note { margin: 0; font-size: 14px; background: var(--accent-pale); color: var(--vert); border-radius: 12px; padding: 12px 14px; }
+@media (max-width: 560px) {
+  .resa-panneau__boite { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .resa-choix { grid-template-columns: 1fr; }
+  .resa-carte { flex-direction: row; align-items: center; }
+  .resa-carte img { width: 84px; flex: none; }
+}
+@media (prefers-reduced-motion: reduce) { .resa-panneau__boite, .resa-panneau__voile { transition: none; } }
