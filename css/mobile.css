@@ -1,0 +1,80 @@
+/* Gîte sur la Baume : version mobile (29/10/2026), reprise du Domaine des Chabriers.
+   Chargé après style.css. Tout ce qui change l'affichage d'un téléphone est dans la requête max-width: 767px :
+   sur ordinateur et sur tablette, rien ne change. Même design : seules la présentation des blocs (carrousels,
+   bande qui défile) et la place des chiffres des héros changent.
+   Source : outils/mobile/mobile.css, copiée dans 04-Site/css/ par construire-site-v3.py. */
+
+/* Éléments ajoutés par mobile.js : invisibles hors téléphone */
+.m-car { display: contents; }
+.m-nav, .m-clone { display: none; }
+
+@media (max-width: 767px) {
+  /* Chiffres des héros : trois sur une ligne, quatre en deux lignes de deux, toujours dans l'écran ------------- */
+  .chiffres-heros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 100%; }
+  .chiffres-heros:has(> li:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chiffres-heros li { padding: 11px 8px; min-width: 0; }
+  .chiffres-heros strong { white-space: normal; font-size: 25px; line-height: 1.05; }
+  .chiffres-heros:has(> li:nth-child(4)) li:nth-child(3) { border-left: 0; }
+  .chiffres-heros:has(> li:nth-child(4)) li:nth-child(n+3) { border-top: 1px solid rgba(255,255,255,.22); }
+
+  /* Accueil, les infos pratiques : deux colonnes au lieu de six lignes ----------------------------------------- */
+  #pratique .compris { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  #pratique .compris li { flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 16px 10px; font-size: 13px; }
+  #pratique .compris strong { font-size: 17px; }
+
+  /* Bande sous le héros de l'accueil : une ligne qui défile de droite à gauche --------------------------------- */
+  .bande-mots { width: var(--large); margin-inline: auto; height: 76px; overflow: hidden; background: var(--blanc); border-radius: var(--rayon); box-shadow: var(--ombre); }
+  .bande-mots__carte {
+    display: flex; flex-wrap: nowrap; width: max-content; margin: 0; padding: 0; background: none; box-shadow: none; border-radius: 0;
+    animation: m-defile var(--m-duree, 24s) linear infinite; will-change: transform;
+  }
+  .bande-mots__carte li, .bande-mots__carte li.m-clone {
+    display: flex; flex-direction: row; text-align: left; align-items: center; gap: 12px; padding: 14px 22px; white-space: nowrap; flex: none;
+    border: 0 !important; border-radius: 0 !important; grid-column: auto !important;
+  }
+  .bande-mots__carte li + li::before { display: block; top: 20px; bottom: 20px; }
+  .bande-mots__carte .icone-rond { width: 42px; height: 42px; }
+  .bande-mots__carte strong { font-size: 18px; }
+  .bande-mots__carte li span:last-child { font-size: 13px; }
+  .bande-mots__carte.apparait, .bande-mots .apparait { opacity: 1 !important; transform: none !important; transition: none !important; }
+  @keyframes m-defile { to { transform: translateX(-50%); } }
+
+  /* Carrousels : on fait glisser les cartes, la carte suivante dépasse à droite pour inviter à glisser ---------- */
+  .m-car { display: block; position: relative; margin-inline: calc(50% - 50vw); width: 100vw; max-width: 100vw; --m-w: min(80vw, 380px); }
+  .m-piste {
+    display: flex !important; grid-template-columns: none !important; flex-wrap: nowrap !important; gap: 14px !important;
+    overflow-x: auto !important; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+    padding: 6px calc(50% - var(--m-w) / 2) 10px !important; scrollbar-width: none; overscroll-behavior-x: contain;
+    margin: 0 !important; max-width: none !important; width: auto !important; height: auto !important;
+  }
+  .m-piste::-webkit-scrollbar { display: none; }
+  .m-piste > * {
+    flex: 0 0 var(--m-w) !important; width: var(--m-w) !important; min-width: 0; max-width: none !important;
+    scroll-snap-align: center; scroll-snap-stop: always; margin: 0 !important; grid-column: auto !important; grid-row: auto !important;
+  }
+  .m-piste.apparait, .m-piste .apparait { opacity: 1 !important; transform: none !important; }
+  /* photos des galeries : toutes au même format */
+  .m-piste > img { aspect-ratio: 4 / 3; height: auto !important; object-fit: cover; border-radius: var(--rayon-petit); }
+  /* grandes cartes à photo (Pourquoi venez-vous, Idéal pour, occasions, à qui s'adresse l'écurie) */
+  .m-piste > .case, .m-piste > .raison { min-height: 420px; }
+  .m-piste > .gite { aspect-ratio: auto; min-height: 300px; }
+  /* cartes de texte : même hauteur dans une même bande */
+  .m-piste > li, .m-piste > article, .m-piste > .raison { height: auto; align-self: stretch; }
+  /* Comment se passe la location : les règles et ce qui est compris en deux panneaux qu'on fait glisser */
+  .m-piste.tarifs-plus { background: none; border-radius: 0; margin-top: 24px !important; }
+  .m-piste.tarifs-plus > div { background: var(--creme-fonce); border-radius: var(--rayon); padding: 22px; }
+  /* points sous la bande : le vert du gîte, le point actif plus grand */
+  .m-nav { display: flex; align-items: center; justify-content: center; margin-top: 8px; }
+  .m-points { display: flex; justify-content: center; gap: 9px; min-height: 26px; align-items: center; flex-wrap: wrap; max-width: 86vw; }
+  .m-points span { width: 9px; height: 9px; border-radius: 50%; background: rgba(48, 68, 39, .25); transition: background .2s, transform .2s; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .m-points span.est-actif { background: var(--accent); transform: scale(1.45); }
+  .section--fonce .m-points span, .section--photo .m-points span { background: rgba(255,255,255,.35); }
+  .section--fonce .m-points span.est-actif, .section--photo .m-points span.est-actif { background: #fff; }
+}
+
+/* Réduction des animations demandée dans le téléphone : la bande ne défile plus seule, on la fait glisser */
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .bande-mots { overflow-x: auto; scrollbar-width: none; }
+  .bande-mots::-webkit-scrollbar { display: none; }
+  .bande-mots__carte { animation: none !important; }
+}
