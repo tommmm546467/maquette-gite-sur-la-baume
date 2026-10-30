@@ -13,6 +13,18 @@
   .heros--accueil { min-height: 100svh; align-items: center; }
   .heros--accueil .heros__contenu { padding-top: calc(var(--entete) + 26px); padding-bottom: 96px; }
 
+  /* Textes plus petits (retour de Tom du 30/10) : on voit plus de choses à la fois, même design ----------------- */
+  body { font-size: 15px; }
+  .section h2, .appel h2 { font-size: 27px; }
+  .section h3 { font-size: 19px; }
+  .chapeau, .appel__sous, .combien__reponse { font-size: 15px; line-height: 1.5; }
+  .section p, .section li { font-size: 14px; }
+  .section .chapeau, .section .combien__reponse { font-size: 15px; }
+  .section .combien__chiffre { font-size: 78px; }
+  .meteo__titre { font-size: 24px; }
+  .meteo__liste, .meteo__liste li, .interrupteur { font-size: 13.5px; }
+  .faq summary { font-size: 16px; }
+
   /* Chiffres des héros : trois sur une ligne, quatre en deux lignes de deux, toujours dans l'écran ------------- */
   .chiffres-heros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 100%; }
   .chiffres-heros:has(> li:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
