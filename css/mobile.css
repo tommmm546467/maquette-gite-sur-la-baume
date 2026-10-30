@@ -9,6 +9,10 @@
 .m-nav, .m-clone { display: none; }
 
 @media (max-width: 767px) {
+  /* Accueil : la vidéo du héros prend tout l'écran (retour de Tom du 30/10), la bande n'apparaît qu'en bas ----- */
+  .heros--accueil { min-height: 100svh; align-items: center; }
+  .heros--accueil .heros__contenu { padding-top: calc(var(--entete) + 26px); padding-bottom: 96px; }
+
   /* Chiffres des héros : trois sur une ligne, quatre en deux lignes de deux, toujours dans l'écran ------------- */
   .chiffres-heros { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 100%; }
   .chiffres-heros:has(> li:nth-child(4)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
